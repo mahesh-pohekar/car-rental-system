@@ -1,0 +1,39 @@
+.payment-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+
+  .payment-form {
+    width: 150%;
+    padding: 5%;
+    border: 1px solid #e8e8e8;
+    border-radius: 8px;
+    background-color: #fff;
+
+    .payment-title {
+      font-size: 2rem;
+      margin-bottom: 10%;
+      text-align: center;
+    }
+
+    .form-item {
+      margin-bottom: 5%;
+
+      .form-label {
+        display: block;
+        margin-bottom: 2%;
+        font-weight: bold;
+      }
+
+      .error-message {
+        color: #f5222d;
+        margin-top: 2%;
+      }
+    }
+
+    .form-actions {
+      text-align: center;
+    }
+  }
+}

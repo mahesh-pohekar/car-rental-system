@@ -1,0 +1,62 @@
+/* General Styles */
+
+[nz-form] {
+    max-width: 600px; /* Limit form width */
+  }
+  
+  .register-are {
+    margin-bottom: 8px; /* Spacing below registration area */
+  }
+  
+  nz-form-control {
+    min-width: 280px; /* Minimum width for input fields */
+  }
+  
+  button {
+    background-color: #001529; /* Button background color */
+    border: none; /* Remove button border */
+    padding: 10px 20px; /* Add button padding */
+    border-radius: 4px; /* Add button corner rounding */
+    cursor: pointer; /* Indicate clickable behavior */
+  }
+  
+  /* Element-Specific Styles */
+  
+  .phone-select {
+    width: 70px; /* Width for phone number selector (if applicable) */
+  }
+  
+  .child {
+    padding: 50px; /* Padding inside the signup form section */
+    position: absolute;
+    width: 380px; /* Width of the signup form section */
+    background-color: white;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Center the form section */
+    box-shadow: 1px 1px 15px 7px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
+    border-radius: 5px; /* Rounded corners for the form section */
+  }
+  
+  .parent {
+    width: 100%; /* Full width for the parent container */
+    height: 91vh; /* Set container height to 91% viewport height */
+    position: relative; /* Allow absolute positioning of child elements */
+  }
+  
+  .imgDiv {
+    width: 100%; /* Full width for the image container (if applicable) */
+    vertical-align: middle; /* Align image vertically within its container */
+    margin-bottom: 40px; /* Spacing below the image container */
+  }
+  
+  .login-form-margin {
+    margin-bottom: 16px; /* Spacing below login button */
+  }
+  
+  .login-form-forgot {
+    float: right; /* Align "forgot password" text (if applicable) to the right */
+  }
+  .login-form-button {
+    width: 100%;
+}

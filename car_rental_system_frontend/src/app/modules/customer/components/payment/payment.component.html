@@ -1,0 +1,42 @@
+<div class="payment-container">
+  <nz-spin [nzSpinning]="isSpinning" [nzSize]="'large'" nzTip="Processing payment...">
+    <div class="payment-form">
+      <h2 class="payment-title">Payment Details</h2>
+      <form nz-form [formGroup]="paymentForm" (ngSubmit)="submitPayment()">
+        <div class="form-item">
+          <label class="form-label">Card Number:</label>
+          <nz-form-control>
+            <input nz-input formControlName="cardNumber" placeholder="Enter card number" />
+          </nz-form-control>
+          <div class="error-message" *ngIf="paymentForm.get('cardNumber')?.dirty && paymentForm.get('cardNumber')?.errors">
+            Please enter a valid card number.
+          </div>
+        </div>
+
+        <div class="form-item">
+          <label class="form-label">Expiry Date:</label>
+          <nz-form-control>
+            <input nz-input formControlName="expiryDate" placeholder="MM/YY" />
+          </nz-form-control>
+          <div class="error-message" *ngIf="paymentForm.get('expiryDate')?.dirty && paymentForm.get('expiryDate')?.errors">
+            Please enter a valid expiry date.
+          </div>
+        </div>
+
+        <div class="form-item">
+          <label class="form-label">CVV:</label>
+          <nz-form-control>
+            <input nz-input formControlName="cvv" placeholder="CVV" />
+          </nz-form-control>
+          <div class="error-message" *ngIf="paymentForm.get('cvv')?.dirty && paymentForm.get('cvv')?.errors">
+            Please enter a valid CVV.
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button nz-button nzType="primary" type="submit">Pay Now</button>
+        </div>
+      </form>
+    </div>
+  </nz-spin>
+</div>

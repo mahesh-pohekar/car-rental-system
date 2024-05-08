@@ -1,0 +1,49 @@
+.my-bookings-table {
+    width: 100%;
+    border-collapse: collapse;
+  
+    th, td {
+      padding: 2%;
+      border-bottom: 1px solid #ddd;
+      text-align: left;
+    }
+  
+    th {
+      background-color: #f5f5f5;
+      font-weight: bold;
+      color: #333;
+    }
+  
+    tbody tr:hover {
+      background-color: #f9f9f9;
+    }
+  
+    .approved {
+      color: #4caf50; /* Green color for approved status */
+    }
+  
+    .rejected {
+      color: #f44336; /* Red color for rejected status */
+    }
+  
+    .pay-now-button {
+      background-color: #007bff;
+      border-color: #007bff;
+      color: #fff;
+      font-weight: bold;
+      border-radius: 4px;
+      cursor: pointer;
+      padding: 1% 2%;
+  
+      &:hover {
+        background-color: #0056b3;
+        border-color: #0056b3;
+      }
+    }
+  
+    .paid-label {
+      color: #28a745; /* Green color for paid label */
+      font-weight: bold;
+    }
+  }
+  
