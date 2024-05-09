@@ -11,13 +11,9 @@ jobs:
       - uses: actions/checkout@v3
 
       # Build backend image
-      - name: Build backend
-        working-directory: ./car_rental_system  # Change to your backend directory
-        run: mvn clean package  # Build the JAR file
-
       - name: Build backend image
         working-directory: ./car_rental_system
-        run: docker build -t maheshpohekar/backend-image:latest . -f Dockerfile  # Assuming your Dockerfile is named Dockerfile
+        run: docker build -t maheshpohekar/backend-image:latest .
       
         # Build frontend image
       - name: Install dependencies (frontend)

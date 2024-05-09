@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.project.car_rental_system.CarRentalSystemApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 15.825 s - in com.project.car_rental_system.CarRentalSystemApplicationTests

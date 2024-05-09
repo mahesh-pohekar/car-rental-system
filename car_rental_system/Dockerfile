@@ -2,15 +2,6 @@
 FROM maven:3.8.4-openjdk-17 AS builder
 WORKDIR /app
 
-# Copy the Maven project file and download dependencies
-COPY pom.xml .
-
-# Copy the application source code
-COPY src ./src
-
-# Build the application using Maven (adjust command if using Gradle)
-RUN mvn clean install -DskipTests
-
 # Copy the generated JAR file to a designated location
 COPY target/*.jar app.jar
 
