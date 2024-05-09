@@ -14,25 +14,6 @@ jobs:
       - name: Build backend image
         working-directory: ./car_rental_system
         run: docker build -t maheshpohekar/backend-image:latest --cache-from maheshpohekar/backend:v1.0 .
-
-      # Build frontend image
-      - name: Install dependencies (frontend)
-        working-directory: ./car_rental_system_frontend  
-        run: npm install
-      - name: Build frontend image
-        working-directory: ./car_rental_system_frontend  
-        run: docker build -t maheshpohekar/frontend-image:latest .
-
-      # Push images (optional)
-      - name: Check for backend image
-        run: |
-          if [[ $(docker images | grep docker.io/maheshpohekar/backend-image:latest) ]]; then
-            echo "Backend image exists"
-          else
-            echo "Error: Backend image not found. Build required!"
-            exit 1
-          fi
-
       - name: Login to Docker Hub (optional)
         if: env.DOCKER_USERNAME  # Only if Docker Hub username provided
         uses: docker/login-action@v2
@@ -43,4 +24,23 @@ jobs:
       - name: Push images (optional)  # Only if backend image exists
         run: |
           docker push maheshpohekar/backend-image:latest
+    
+      # Build frontend image
+      - name: Install dependencies (frontend)
+        working-directory: ./car_rental_system_frontend  
+        run: npm install
+      - name: Build frontend image
+        working-directory: ./car_rental_system_frontend  
+        run: docker build -t maheshpohekar/frontend-image:latest .
+
+
+      - name: Login to Docker Hub (optional)
+        if: env.DOCKER_USERNAME  # Only if Docker Hub username provided
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Push images (optional)  # Only if backend image exists
+        run: |
           docker push maheshpohekar/frontend-image:latest
