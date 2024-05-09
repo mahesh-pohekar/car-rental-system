@@ -20,7 +20,7 @@ jobs:
         working-directory: ./car_rental_system_frontend  # Change to your frontend directory
         run: npm install
       - name: Build frontend image
-        working-directory: ./frontend  # Change to your frontend directory
+        working-directory: ./car_rental_system_frontend  # Change to your frontend directory
         run: docker build -t maheshpohekar/frontend-image:latest .  # Replace with your username and tag
 
   deploy:  # Optional deployment job (add after build succeeds)
