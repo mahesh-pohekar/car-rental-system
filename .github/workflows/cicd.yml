@@ -26,7 +26,7 @@ jobs:
       # Push images (optional)
       - name: Check for backend image
         run: |
-          if [[ $(docker images | grep maheshpohekar/backend-image:latest) ]]; then
+          if [[ $(docker images | grep docker.io/maheshpohekar/backend-image:latest) ]]; then
             echo "Backend image exists"
           else
             echo "Error: Backend image not found. Build required!"
