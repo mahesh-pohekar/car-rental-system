@@ -14,27 +14,33 @@ jobs:
       - name: Build backend image
         working-directory: ./car_rental_system
         run: docker build -t maheshpohekar/backend-image:latest .
-      
-        # Build frontend image
+
+      # Build frontend image
       - name: Install dependencies (frontend)
-        working-directory: ./car_rental_system_frontend  # Change to your frontend directory
+        working-directory: ./car_rental_system_frontend  
         run: npm install
       - name: Build frontend image
-        working-directory: ./car_rental_system_frontend  # Change to your frontend directory
-        run: docker build -t maheshpohekar/frontend-image:latest .  # Replace with your username and tag
+        working-directory: ./car_rental_system_frontend  
+        run: docker build -t maheshpohekar/frontend-image:latest .
 
-  deploy:  # Optional deployment job (add after build succeeds)
-      runs-on: ubuntu-latest
-      needs: build  # Only run deploy after successful build
-      steps:
-        - uses: actions/checkout@v3
-        - name: Login to Docker Hub (optional)
-          if: env.DOCKER_USERNAME  # Only if Docker Hub username provided
-          uses: docker/login-action@v2
-          with:
-            username: ${{ secrets.DOCKER_USERNAME }}
-            password: ${{ secrets.DOCKER_PASSWORD }}
-        - name: Push images (optional)
-          run: |
-            docker push maheshpohekar/backend-image:latest
-            docker push maheshpohekar/frontend-image:latest  
+      # Push images (optional)
+      - name: Check for backend image
+        run: |
+          if [[ $(docker images | grep maheshpohekar/backend-image:latest) ]]; then
+            echo "Backend image exists"
+          else
+            echo "Error: Backend image not found. Build required!"
+            exit 1
+          fi
+
+      - name: Login to Docker Hub (optional)
+        if: env.DOCKER_USERNAME  # Only if Docker Hub username provided
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Push images (optional)  # Only if backend image exists
+        run: |
+          docker push maheshpohekar/backend-image:latest
+          docker push maheshpohekar/frontend-image:latest
