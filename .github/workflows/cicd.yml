@@ -23,7 +23,6 @@ jobs:
       - name: Push backend images  # Only if backend image exists
         run: |
           docker push ${{ secrets.DOCKER_USERNAME }}/backend-image:latest
-    
       # Build frontend image
       - name: Install dependencies (frontend)
         working-directory: ./car_rental_system_frontend  
