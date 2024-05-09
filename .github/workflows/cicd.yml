@@ -13,7 +13,7 @@ jobs:
       # Build backend image
       - name: Build backend image
         working-directory: ./car_rental_system
-        run: docker build -t maheshpohekar/backend-image:latest .
+        run: docker build -t maheshpohekar/backend-image:latest --cache-from maheshpohekar/backend:v1.0 .
 
       # Build frontend image
       - name: Install dependencies (frontend)
