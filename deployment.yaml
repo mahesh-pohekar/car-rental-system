@@ -55,7 +55,7 @@ spec:
             - containerPort: 80
           env:
             - name: API_URL
-              value: 'http://backend:8080'
+              value: 'http://backend-service:8080'
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -78,7 +78,7 @@ spec:
             - containerPort: 8080
           env:
             - name: SPRING_DATASOURCE_URL
-              value: "jdbc:mysql://database:3306/car_rental_db"  # Update with your database URL
+              value: "jdbc:mysql://database-service:3306/car_rental_db"  # Update with your database URL
             - name: SPRING_DATASOURCE_USERNAME
               value: "admin"  # Update with your database username
             - name: SPRING_DATASOURCE_PASSWORD
