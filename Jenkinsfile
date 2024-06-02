@@ -11,7 +11,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/mahesh-pohekar/techm-cicd-project.git' // Replace with your repository URL
+                git branch: 'main', url: 'https://github.com/mahesh-pohekar/techm-cicd-project.git' // Replace with your repository URL
             }
         }
 
