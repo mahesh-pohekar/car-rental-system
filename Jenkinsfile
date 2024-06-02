@@ -17,15 +17,15 @@ pipeline {
 
         stage('Build and Push Angular') {
             steps {
-                dir('car_rental_system_frontend') {
                     script {
                         docker.withRegistry('https://registry.hub.docker.com/', DOCKER_CREDENTIALS_ID) {
-                            def angularImage = docker.build("${ANGULAR_IMAGE}:latest")
-                            angularImage.push()
+                            def angularImage = "${ANGULAR_IMAGE}:latest"
+                            sh "docker build -t ${angularImage} car_rental_system_frontend/"  // Build frontend image from 'car_rental_system_frontend' directory (assuming Dockerfile is present)
+                            sh "docker push ${angularImage}"
                         }
                     }
                 }
-            }
+            
         }
 
         stage('Build and Push Spring Boot') {
@@ -33,8 +33,9 @@ pipeline {
                 dir('car_rental_system') {
                     script {
                         docker.withRegistry('https://registry.hub.docker.com/', DOCKER_CREDENTIALS_ID) {
-                            def springImage = docker.build("${SPRING_IMAGE}:latest")
-                            springImage.push()
+                            def springImage = "${SPRING_IMAGE}:latest"
+                            sh "docker build -t ${springImage} car_rental_system/"  // Build frontend image from 'car_rental_system' directory (assuming Dockerfile is present)
+                            sh "docker push ${springImage}"
                         }
                     }
                 }
